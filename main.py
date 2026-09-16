@@ -1,16 +1,25 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+def log_ticket():
+    ticketID = 1
+    print("||You have selected to log a ticket||")
+    print(f"||Ticket number {ticketID} has been created||")
+    issue = str(input("Please enter the description of the issue you would like to log: "))
+    typesOfIssues  = ["Hardware", "Software", "Network", "Security", "User Accounts", "Email", "Data & Storage", "Performance", "Software Testing", "Automation"]
+    for number , category in enumerate(typesOfIssues,1):
+        print(f"{number}: {category}")
+    categorySelection = int(input("Please enter the category you would like to use: "))
+    categorySelection = categorySelection - 1
+    print(f"Okay your issue has been logged as a {typesOfIssues[categorySelection]} error ")
+    ticket = {
+        "ticketID": ticketID,
+        "issue": issue,
+        "category": categorySelection,
+        "status": True
+    }
+    print(ticket)
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    log_ticket()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
