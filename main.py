@@ -6,6 +6,17 @@ class Ticket():
         self.description = description
         self.priority = priority
         self.status = "Open"
+    def closeTicket(self):
+        self.status = "Closed"
+    def displayTicket(self):
+        print(self.ticketid)
+        print(self.category)
+        print(self.description)
+        print(self.priority)
+        print(self.status)
+    def update_priority(self, new_priority):
+        self.priority = new_priority
+        print('The priority has now been updated')
 
 
 def log_ticket():
@@ -20,8 +31,10 @@ def log_ticket():
     typesOfIssues  = ["Hardware", "Software", "Network", "Security", "User Accounts", "Email", "Data & Storage", "Performance", "Software Testing", "Automation"]
     for number , category in enumerate(typesOfIssues,1):
         print(f"{number}: {category}")
+    print("")
     categorySelection = int(input("Please enter the category you would like to use: "))
     categorySelection = categorySelection - 1
+    print("")
     print(f"Okay your issue has been logged as a {typesOfIssues[categorySelection]} error ")
 
     ticket = Ticket(
@@ -31,12 +44,8 @@ def log_ticket():
         ticketPriority,
         True
     )
-    print(ticket.ticketid)
-    print(ticket.category)
-    print(ticket.description)
-    print(ticket.priority)
-    print(ticket.status)
+    return ticket
 if __name__ == '__main__':
-    log_ticket()
-
-
+    ticket = log_ticket()
+    updatePriority = str(input("Please enter the priority you would like to update: "))
+    ticket.update_priority(updatePriority)
